@@ -22,6 +22,10 @@ pygame.display.set_caption("Sprite Color Changer")
 background = pygame.image.load("OIP.jpg")  # Replace with your image file
 background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
+# Load and play background music
+pygame.mixer.music.load("Among_us.mp3")  # Replace with your music file
+pygame.mixer.music.play(-1)  # Loop the music indefinitely
+
 # Clock for controlling the frame rate
 clock = pygame.time.Clock()
 
