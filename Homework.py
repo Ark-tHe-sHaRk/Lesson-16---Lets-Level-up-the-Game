@@ -18,8 +18,16 @@ CHANGE_COLOR_EVENT = pygame.USEREVENT + 1
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Sprite Color Changer")
 
+# Load and scale the background image
+background = pygame.image.load("OIP.jpg")  # Replace with your image file
+background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
 # Clock for controlling the frame rate
 clock = pygame.time.Clock()
+
+# Font for the welcome text
+font = pygame.font.Font(None, 50)  # Default font, size 50
+welcome_text = font.render("Welcome to Ark's Homework Project", True, WHITE)
 
 # Sprite class
 class ColorChangingSprite(pygame.sprite.Sprite):
@@ -54,14 +62,20 @@ while running:
             sprite1.change_color()
             sprite2.change_color()
 
-    # Clear the screen
-    screen.fill(WHITE)
+    # Draw the background
+    screen.blit(background, (0, 0))
+
+    # Draw the welcome text
+    screen.blit(welcome_text, (SCREEN_WIDTH // 2 - welcome_text.get_width() // 2, 20))
 
     # Draw all sprites
     all_sprites.draw(screen)
 
     # Update the display
     pygame.display.flip()
+
+    # Cap the frame rate
+    clock.tick(60)
 
 # Quit Pygame
 pygame.quit()
